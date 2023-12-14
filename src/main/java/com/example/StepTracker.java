@@ -2,28 +2,32 @@ package com.example;
 
 public class StepTracker {
     private int steps;
+    private int currentSteps=0;
+    private int days=0;
+    private int activeDayCounter=0;
     
     public StepTracker(int steps) {
         this.steps=steps;
     }
 
-    public int addDailySteps(int newSteps) {
-        steps +=newSteps;
-        if (steps>=10000) {
-            return steps;
-        } else {
-            return (Integer) null;
+    public void addDailySteps(int newSteps) {
+        days++;
+        currentSteps +=newSteps;
+        if (newSteps>=10000) {
+            activeDayCounter++;
         }
     }
 
     public int activeDays() {
-        int activeDayCounter=0;
-        if ()
         return activeDayCounter;
     }
 
     public double averageSteps() {
-        
+        if (days==0) {
+            return 0.0;
+        } else {
+            return currentSteps/(double) days;
+        }
     }
 
 }

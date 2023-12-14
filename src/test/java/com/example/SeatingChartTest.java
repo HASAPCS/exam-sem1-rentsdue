@@ -34,6 +34,9 @@ public class SeatingChartTest {
     @Test
     public void testSeatingChartConstructor() {
         assertNotNull(seatingChart, "SeatingChart should be initialized");
+        assertEquals(studentList.get(0), seatingChart.getSeats()[0][0], "Should be Karen");
+        assertEquals(studentList.get(3), seatingChart.getSeats()[0][1], "Should be Lester");
+        assertEquals(studentList.get(5), seatingChart.getSeats()[2][1], "Should be Renee");
 
         // Check if the last seat is null (since there are only 10 students but 12 seats)
         assertNull(seatingChart.getSeats()[2][3], "The last seat should be null");
