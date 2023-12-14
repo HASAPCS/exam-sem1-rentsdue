@@ -5,8 +5,6 @@ import java.util.List;
 public class FuelDepot {
     /** The robot used to move the filling mechanism */
     private FuelRobot filler;
-
-    /** The list of fuel tanks */
     private List<FuelTank> tanks;
 
     /**
@@ -22,7 +20,14 @@ public class FuelDepot {
 
     // Method to implement for a)
     public int nextTankToFill(int threshold) {
-        // Your implementation here
+        int indexCounter=0;
+        for (FuelTank i: this.tanks) {
+            indexCounter++;
+            if (i.getFuelLevel()<=threshold) {
+                break;
+            }
+        }
+    return indexCounter;
     }
 
     // Method to implement for b)

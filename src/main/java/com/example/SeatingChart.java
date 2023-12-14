@@ -12,7 +12,7 @@ public class SeatingChart {
 
     // Method to implement b)
     public int removeAbsentStudents(int allowedAbsences) {
-        // Your Implementation here
+        return allowedAbsences;
     }
 
     public Student[][] getSeats() {
