@@ -20,26 +20,27 @@ public class FuelDepot {
 
     // Method to implement for a)
     public int nextTankToFill(int threshold) {
-        int indexCounter=0;
-        for (FuelTank i: this.tanks) {
-            indexCounter++;
-            if (i.getFuelLevel()<=threshold) {
-                break;
+        int minTankIndex = this.filler.getCurrentIndex();
+        for (int i = 0; i < this.tanks.size(); i++) {
+            if (this.tanks.get(i).getFuelLevel() <= threshold && this.tanks.get(i).getFuelLevel() < this.tanks.get(minTankIndex).getFuelLevel()) {
+            minTankIndex = i;
             }
         }
-    return indexCounter;
+        return minTankIndex;
     }
 
     // Method to implement for b)
     public void moveToLocation(int locIndex) {
-        int currentLocation=filler.getCurrentIndex();
-        int moves= locIndex-currentLocation;
-        if (currentLocation>= locIndex) {
+        int currentLoc = filler.getCurrentIndex();
+        boolean isRight = filler.isFacingRight();
+        int moves=Math.abs(locIndex - currentLoc);
+        
+        if (locIndex > currentLoc && !isRight) {
             filler.changeDirection();
-            filler.moveForward(moves);
+        } else if (locIndex < currentLoc && isRight) {
             filler.changeDirection();
-        } else {
-            filler.moveForward(moves);
         }
+
+        filler.moveForward(moves);
     }
 }

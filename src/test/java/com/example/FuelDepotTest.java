@@ -30,16 +30,13 @@ class FuelDepotTest {
     @Test
     void testNextTankToFillWithLowestLevel() {
         int nextTank = depot.nextTankToFill(50);
-
         assertEquals(1, nextTank, "Next tank to fill should be the one with the lowest level within the threshold.");
     }
 
     @Test
     void testNextTankToFillNoneWithinThreshold() {
         robot.setCurrentIndex(3); // Set the robot's current index
-
         int nextTank = depot.nextTankToFill(50);
-
         assertEquals(1, nextTank, "Next tank to fill should be the current robot position as none are within threshold.");
     }
 
@@ -55,10 +52,13 @@ class FuelDepotTest {
     void testMoveToLocationChangeDirection() {
         robot.setCurrentIndex(3); // Starting at index 3
         robot.changeDirection();  // Now facing left
-
         depot.moveToLocation(1);
-
         assertEquals(1, robot.getCurrentIndex(), "Robot should move to index 1.");
         assertEquals(false, robot.isFacingRight(), "Robot should be facing left after moving.");
+
+        robot.setCurrentIndex(1); // Starting at index 1 
+        depot.moveToLocation(5);
+        assertEquals(5, robot.getCurrentIndex(), "Robot should move to index 5.");
+        assertEquals(true, robot.isFacingRight(), "Robot should be facing right after moving.");
     }
 }

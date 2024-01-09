@@ -13,7 +13,7 @@ public class StepTracker {
     public void addDailySteps(int newSteps) {
         days++;
         currentSteps +=newSteps;
-        if (newSteps>=10000) {
+        if (newSteps>=steps) {
             activeDayCounter++;
         }
     }
